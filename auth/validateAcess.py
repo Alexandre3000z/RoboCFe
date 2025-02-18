@@ -2,7 +2,7 @@ import requests
 from auth.T import TOKEN
 
 #Validação do TOKEN FORNECIDO PELO ADM
-def verificar_arquivo(url, texto_procurado):
+def check_file(url, texto_procurado):
     try:
         response = requests.get(url)
         response.raise_for_status()  # Gera um erro se a requisição falhar
@@ -13,12 +13,12 @@ def verificar_arquivo(url, texto_procurado):
         return False
 
 # Fluxo principal
-def validarAcesso():
+def authorize_access():
     
     url = "https://drive.google.com/uc?export=download&id=1k9Y8YgnsE4KPvQ3_62MdELLj6UhVztsH"
     texto_procurado = TOKEN
     
-    if verificar_arquivo(url, texto_procurado):
+    if check_file(url, texto_procurado):
         
         return True
         # Código autorizado
