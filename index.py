@@ -23,4 +23,7 @@ if acessValidator:
     
     startProcess(driver)
 
+else:
+    print('Chave de acesso inválida, por gentileza, fale com seu administrador...')
 
+numero_formatado = f"{app_state.inscricao_estadual[:2]}.{app_state.inscricao_estadual[2:5]}.{app_state.inscricao_estadual[5:8]}-{app_state.inscricao_estadual[8]}"

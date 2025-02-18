@@ -5,7 +5,6 @@ from utils.driverFunctions import *
 
 def startProcess(driver):
     
-    numero_formatado = f"{app_state.inscricao_estadual[:2]}.{app_state.inscricao_estadual[2:5]}.{app_state.inscricao_estadual[5:8]}-{app_state.inscricao_estadual[8]}"
     driver.get('https://portal-dte.sefaz.ce.gov.br/#/index')
     
     time.sleep(5)
@@ -36,3 +35,8 @@ def startProcess(driver):
         
         profile = locateByXpath(driver, 30, '/html/body/my-app/div/div/div/app-perfil/div/div[1]/table/tbody/tr/td[1]')
         profile.click()
+    
+    time.sleep(1)
+
+    enterButton = locateByXpath(driver, 30, '/html/body/my-app/div/div/div/app-perfil/div/div[2]/button[2]')
+    enterButton.click()
