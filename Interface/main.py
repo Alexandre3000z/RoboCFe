@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from PIL import Image
 from tkinter import messagebox
-from Front.app_state import app_state
+from Interface.app_state import app_state
 
 def openMainPage(lastPage):
     

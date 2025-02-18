@@ -1,8 +1,8 @@
 import customtkinter as ctk
 from PIL import Image
 from tkinter import messagebox
-from Front.app_state import app_state
-from Front.main import openMainPage
+from Interface.app_state import app_state
+from Interface.main import openMainPage
 # Dados de autenticação (usuário e senha)
 USUARIO_CORRETO = "admin"
 SENHA_CORRETA = "1234"
