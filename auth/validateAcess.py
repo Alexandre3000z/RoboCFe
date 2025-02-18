@@ -1,5 +1,5 @@
 import requests
-from T import TOKEN
+from auth.T import TOKEN
 
 #Validação do TOKEN FORNECIDO PELO ADM
 def verificar_arquivo(url, texto_procurado):
