@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 import time
 
-def locateAndClickByXpath(driver, time, xpath):
+def locateByXpath(driver, time, xpath):
     try:
         element = WebDriverWait(driver, time).until(
         EC.presence_of_element_located((By.XPATH, xpath))
