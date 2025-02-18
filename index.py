@@ -11,9 +11,11 @@ from Interface.app_state import app_state
 
 acessValidator = authorize_access() #True or False
 
-driver = Chorme()
+
 
 if acessValidator:
     startInterface()
+    
+    driver = Chorme()
 
 

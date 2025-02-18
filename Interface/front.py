@@ -99,7 +99,7 @@ def startInterface():
     logo_frame.pack_propagate(False)
 
     try:
-        logo_image = ctk.CTkImage(dark_image=Image.open("image.png"), size=(500,500))
+        logo_image = ctk.CTkImage(dark_image=Image.open("./img/logo.png"), size=(500,500))
         logo_label = ctk.CTkLabel(logo_frame, image=logo_image, text="")
         logo_label.pack(expand=True)
     except:
