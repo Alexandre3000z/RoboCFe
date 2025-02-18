@@ -92,8 +92,6 @@ def startInterface():
                                 text_color="#1e3d2f", hover_color="#dcdcdc", command=checkLogin)
     login_button.pack(pady=10)
     
-    print(resultado)
-
     #-----------LADO DIREITO(logo)-----------#
     logo_frame = ctk.CTkFrame(frame_direita, width=550, height=500, corner_radius=100, fg_color="white")
     logo_frame.pack(side="right", fill="both", expand=True)
