@@ -9,7 +9,7 @@ SENHA_CORRETA = "1234"
 
 resultado = None
 
-def executarFront():
+def startInterface():
     # Função para verificar o login
     def checkLogin():
         usuario = email_entry.get()
