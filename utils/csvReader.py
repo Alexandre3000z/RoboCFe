@@ -4,7 +4,7 @@ import os
 
 from classes.CFElist import cfe_list
 
-def tratarCSV(directory, lista):
+def readCSV(directory, lista):
     # Obtém todos os arquivos CSV no diretório especificado
     list_of_files = glob.glob(os.path.join(directory, '*.csv'))
     if not list_of_files:
@@ -19,7 +19,7 @@ def tratarCSV(directory, lista):
         # Armazena os valores da coluna "Chave de Acesso" em uma lista
         chave_de_acesso_list = df[coluna].dropna().tolist()
         chave_de_acesso_list = chave_de_acesso_list[3:-1]#Remover 3 primeiros e ultimo item
-        cfe_list.extend(chave_de_acesso_list)
+        cfe_list.add_data_cfe(chave_de_acesso_list)
         
         print('Foram encontrados ', len(chave_de_acesso_list), ' Cupons ', lista)
     else:

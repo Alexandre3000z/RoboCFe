@@ -1,5 +1,6 @@
 #Utils
 from utils.CompanyFormater import formatCompanyCode
+from utils.csvReader import readCSV
 
 #Importando navegador
 from config.browserConfig import Chorme
@@ -18,6 +19,10 @@ from scripts.sigetWindow import enterSiget
 from scripts.searchCsv import downloadCsvAut,downloadCsvCancel
 
 import time
+import os
+
+
+downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
 
 acessValidator = authorize_access() #True or False
 
@@ -36,9 +41,13 @@ try:
         
         enterSiget(driver)
         
-        downloadCsvAut(driver)
-        downloadCsvCancel(driver)
-        
+        responseAut = downloadCsvAut(driver)
+        if responseAut == True:
+            readCSV(downloads_path, 'Autorizados')
+            
+        responseCancel = downloadCsvCancel(driver)
+        if responseCancel == True:
+            readCSV(downloads_path, 'Cancelados')
         
         
         time.sleep(1000)
