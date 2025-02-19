@@ -5,7 +5,7 @@ from utils.driverFunctions import *
 
 from Interface.app_state import app_state
 
-from scripts.leaveSefaz import leaveSefazDte
+from scripts.DTE.leaveSefaz import leaveSefazDte
 
 from selenium.webdriver.support.ui import Select
 

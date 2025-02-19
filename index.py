@@ -1,6 +1,7 @@
 #Utils
 from utils.CompanyFormater import formatCompanyCode
 from utils.csvReader import readCSV
+from utils.xml_organizer import *
 
 #Importando navegador
 from config.browserConfig import Chorme
@@ -13,10 +14,10 @@ from Interface.front import startInterface
 from Interface.app_state import app_state
 
 #Scripts todos os passos
-from scripts.start import startProcess
-from scripts.company_finder import companyFinder
-from scripts.sigetWindow import enterSiget
-from scripts.searchCsv import downloadCsvAut,downloadCsvCancel
+from scripts.DTE.start import startProcess
+from scripts.DTE.company_finder import companyFinder
+from scripts.DTE.sigetWindow import enterSiget
+from scripts.DTE.searchCsv import downloadCsvAut,downloadCsvCancel
 
 import time
 import os
@@ -45,11 +46,13 @@ try:
         responseAut = downloadCsvAut(driver)
         if responseAut == True:
             readCSV(downloads_path, 'Autorizados')
+            apagarCSV(downloads_path)
             
         responseCancel = downloadCsvCancel(driver)
         if responseCancel == True:
             readCSV(downloads_path, 'Cancelados')
-        
+            apagarCSV(downloads_path)
+            
         print(cfe_list.totalList)
         print(len(cfe_list.totalList))
         
