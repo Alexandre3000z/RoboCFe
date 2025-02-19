@@ -33,4 +33,4 @@ def Chorme():
         return driver
     
     except:
-        print('Erro ao inicializar o Google, verifique se você possui o Google Chrome instalado e atualizado.')
+        raise Exception('Erro ao inicializar o Google, verifique se você possui o Google Chrome instalado e atualizado.')
