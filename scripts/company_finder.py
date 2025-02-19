@@ -19,7 +19,10 @@ def companyFinder(driver, companyCode):
         
         if textSelect.text == companyCode:
             print('Empresa encontrada!')
-        
+
+            submitTable = findElementsByXpath(driver, '/html/body/my-app/div/div/div/app-procuracao/div/div[3]/button')
+            submitTable[1].click()
+            
         else:
             raise Exception('Empresa não foi encontrada no DTE')
         
