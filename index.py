@@ -35,6 +35,8 @@ try:
         
         enterSiget(driver)
         
+        
+        
         time.sleep(1000)
     else:
         raise Exception('Chave de acesso inválida, por gentileza, fale com seu administrador...')
