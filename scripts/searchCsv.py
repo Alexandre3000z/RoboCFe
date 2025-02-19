@@ -5,10 +5,10 @@ from utils.driverFunctions import *
 
 from Interface.app_state import app_state
 
-from selenium.webdriver.support.ui import WebDriverWait
+from scripts.leaveSefaz import leaveSefazDte
+
 from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+
 
 
 def downloadCsvAut(driver):
@@ -145,66 +145,15 @@ def downloadCsvCancel(driver):
         closeButton.click()
         time.sleep(2)
         
-        perfilA = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="perfil-empresa"]/li[2]/a'))
-        ) 
-        perfilA.click()
-        time.sleep(2)
-        
-        sairA = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="perfil-empresa"]/li[2]/ul/li[2]/div/a'))
-        ) 
-        sairA.click()
-        time.sleep(2)
-        
-        driver.get('https://portal-dte.sefaz.ce.gov.br/#/home')
-        
-        time.sleep(2)
-        
-        perfildte = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '/html/body/my-app/header/div/div/nav/ul/li[3]/a'))
-        )       
-        perfildte.click()
-        time.sleep(3)
-        sairPefildte = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '/html/body/my-app/header/div[2]/div/nav/ul/li[2]/div/button'))
-        )       
-        sairPefildte.click()
-        
-        time.sleep(2)
+        leaveSefazDte(driver)
         
         return True
         
     else:
         
         print('Essa empresa não tem cupons fiscais de cancelamento até o momento')
-        perfil = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="perfil-empresa"]/li[2]/a'))
-        ) 
-        perfil.click()
         
-        time.sleep(1)
-        
-        sair = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="perfil-empresa"]/li[2]/ul/li[2]/div/a'))
-        ) 
-        sair.click()
-        
-        time.sleep(3)
-        
-        driver.get('https://portal-dte.sefaz.ce.gov.br/#/home')
-        
-        time.sleep(2)
-        
-        perfil = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '/html/body/my-app/header/div/div/nav/ul/li[3]/a'))
-        )       
-        perfil.click()
-        
-        sairPefil = WebDriverWait(driver, 30).until(
-        EC.presence_of_element_located((By.XPATH, '/html/body/my-app/header/div[2]/div/nav/ul/li[2]/div/button'))
-        )       
-        sairPefil.click()
+        leaveSefazDte(driver)
         
         time.sleep(2)
         return False
