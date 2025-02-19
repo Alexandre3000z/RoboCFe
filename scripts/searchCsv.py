@@ -48,12 +48,12 @@ def downloadCsvAut(driver):
     
     time.sleep(8)
     
-    selectMonth = driver.find_element(By.XPATH, '//*[@id="mes_select"]')
+    selectMonth = findElementByXpath(driver, '//*[@id="mes_select"]')
     optionMonth = Select(selectMonth)
     optionMonth.select_by_index(int(app_state.mes) - 1)
     print('pegou mes')
     
-    selectYear = driver.find_element(By.XPATH, '//*[@id="ano_select"]')
+    selectYear = findElementByXpath(driver, '//*[@id="ano_select"]')
     optionYear = Select(selectYear)
     optionYear.select_by_value(f'{app_state.ano}')
     print('pegou ano')

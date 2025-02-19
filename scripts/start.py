@@ -14,27 +14,11 @@ def startProcess(driver):
     
     time.sleep(3)
      
-    certificadoSelect = locateByXpath(driver, 30, '/html/body/my-app/div/div/div/app-certificado/div/ul/li/button')
-    certificadoSelect.click()
-    
-    try:
+    locateByXpath(driver, 200, '/html/body/my-app/div/div/div/app-perfil/div/div[1]/table/thead')
         
-        profile = locateByXpath(driver, 30, '/html/body/my-app/div/div/div/app-perfil/div/div[1]/table/tbody/tr/td[1]')
-        profile.click()
+    profile = locateByXpath(driver, 30, '/html/body/my-app/div/div/div/app-perfil/div/div[1]/table/tbody/tr/td[1]')
+    profile.click()
         
-    except:
-        print('Carregamento infinito detectado, corrigindo...')
-        driver.refresh()
-        
-        time.sleep(3)
-        
-        certificadoSelect = locateByXpath(driver, 30, '/html/body/my-app/div/div/div/app-certificado/div/ul/li/button')
-        certificadoSelect.click()
-        
-        time.sleep(3)
-        
-        profile = locateByXpath(driver, 30, '/html/body/my-app/div/div/div/app-perfil/div/div[1]/table/tbody/tr/td[1]')
-        profile.click()
     
     time.sleep(1)
 
