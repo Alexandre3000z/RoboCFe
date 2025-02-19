@@ -5,25 +5,17 @@ from Interface.app_state import app_state
 
 def openMainPage(lastPage):
     
-    # Função para permitir que só uma caixa seja selecionada
-    def checkbox_event(checkbox):
-        if checkbox == "A":
-            if checkbox_a.get() == 1:
-                checkbox_b.deselect()
-        elif checkbox == "B":
-            if checkbox_b.get() == 1:
-                checkbox_a.deselect()
+   
 
     def save_and_close():
         """Captura os valores dos campos e armazena no estado global antes de fechar a janela."""
-        selected_process = 1 if checkbox_a.get() == 1 else 2
-        selected_cupom = selected_option.get()
+
         inscricao_estadual = Ie_entry.get()
         mes = Month_entry.get()
         ano = Year_entry.get()
 
         # Atualiza os dados globais
-        app_state.set_data(selected_process, selected_cupom, inscricao_estadual, mes, ano)
+        app_state.set_data(inscricao_estadual, mes, ano)
 
         # Fecha a janela principal
         mainPage.destroy()
@@ -38,24 +30,11 @@ def openMainPage(lastPage):
     mainPage.geometry("1280x720")
     mainPage.configure(fg_color="#25412D")
 
-    # Texto de boas-vindas
-    welcomeLabel = ctk.CTkLabel(mainPage, 
-                                text="AUTOMAÇÃO DE CUPONS", 
-                                font=("Consolas", 38, "bold"), 
-                                text_color="white")
-    welcomeLabel.pack(pady=50)
+
+
+    mainPage_frame = ctk.CTkFrame(mainPage, width=1200, height=600, corner_radius=20,fg_color="transparent")
+    mainPage_frame.pack(fill="both", expand=True, padx=20, pady=20)
     
-   # Frame principal que segura os dois lados
-    mainPage_frame = ctk.CTkFrame(mainPage, 
-                                  width=1200, 
-                                  height=600, 
-                                  corner_radius=20, 
-                                  fg_color='#25412D',
-                                  )
-    
-    mainPage_frame.pack(fill="both", 
-                        expand=True, 
-                        padx=100, pady=(10,0))
 
 #------------------------------------------------------------------#
 #--------------------------LADO ESQUERDO---------------------------#
@@ -77,39 +56,68 @@ def openMainPage(lastPage):
 
     # Titulo
     IeTitleLabel = ctk.CTkLabel(MainLeft_frame, 
-                                text="SELECIONE O TIPO DE PROCESSO:", 
-                                font=("Consolas", 20, "bold"), 
-                                text_color="white")
+                                text=" LOGIN AMBIENTE SEGURO ", 
+                                font=("Consolas", 30, "bold"), 
+                                text_color="#25412D",
+                                width=600,
+                                height=50,
+                                corner_radius=6,
+                                fg_color='white')
     
     IeTitleLabel.pack(anchor='w', pady=(0, 5))
     
 
-    # CheckBoxes
-    checkbox_a = ctk.CTkCheckBox(MainLeft_frame, 
-                                 text_color='white',
-                                 font=("Consolas", 18, "bold"), 
-                                 text="Processo Automático (Com procuração)", 
-                                 hover_color='white',
-                                 border_color='white',
-                                 command=lambda: checkbox_event("A"))
+   # Titulo de usuario
+    UserLabel = ctk.CTkLabel(MainLeft_frame,
+                           text="CPF DO CONTADOR:",
+                           font=("Consolas", 20, "bold"), 
+                           text_color="white")
     
-    checkbox_b = ctk.CTkCheckBox(MainLeft_frame, 
-                                 text_color='white',
-                                 font=("Consolas", 18, "bold"),
-                                 text="Processo Manual (Sem procuração)", 
-                                 hover_color='white',
-                                 border_color='white',
-                                 command=lambda: checkbox_event("B"))
+    UserLabel.pack(anchor='w', pady=(20, 10))
     
-    # Posicionar as CheckBoxes
-    checkbox_a.pack(anchor='w', pady=(20,10), padx=20)
-    checkbox_b.pack(anchor='w', pady=10, padx=20)
+    # Campo para usuario
+    User_entry = ctk.CTkEntry(MainLeft_frame, 
+                            text_color='black',
+                            width=175, 
+                            font=("Consolas", 18, "bold"), 
+                            border_color='white')
+    
+    User_entry.pack(anchor='w', pady=0, padx=20)
+    
+    # Titulo de SENHA
+    UserLabel = ctk.CTkLabel(MainLeft_frame,
+                           text="SENHA:",
+                           font=("Consolas", 20, "bold"), 
+                           text_color="white")
+    
+    UserLabel.pack(anchor='w', pady=(20, 10))
+    
+    # Campo para SENHA
+    User_entry = ctk.CTkEntry(MainLeft_frame, 
+                            text_color='black',
+                            width=175, 
+                            font=("Consolas", 18, "bold"), 
+                            border_color='white')
+    
+    User_entry.pack(anchor='w', pady=0, padx=20)
     
 #-------------- CAMPO DE INSCRIÇÃO ESTADUAL --------------#
 
+    # Titulo
+    IeTitleLabel = ctk.CTkLabel(MainLeft_frame, 
+                                text=" DADOS DE CONSULTA ", 
+                                font=("Consolas", 30, "bold"), 
+                                width=600,
+                                height=50,
+                                text_color="#25412D",
+                                corner_radius=6,
+                                fg_color='white')
+    
+    IeTitleLabel.pack(anchor='w', pady=(70, 5))
+    
     # Titulo de Inscrição
     IeLabel = ctk.CTkLabel(MainLeft_frame,
-                           text="INSCRIÇÃO ESTADUAL:",
+                           text="INSCRIÇÃO:",
                            font=("Consolas", 20, "bold"), 
                            text_color="white")
     
@@ -178,74 +186,31 @@ def openMainPage(lastPage):
 #------------------------------------------------------------------#
 #---------------------------LADO DIREITO---------------------------#
 #------------------------------------------------------------------#
-
        
     # Frame da direita (não visível, mas organiza o conteúdo)
-    MainRight_frame = ctk.CTkFrame(mainPage_frame, 
-                                   fg_color="transparent",
-                                   )
+    MainRight_frame = ctk.CTkFrame(mainPage_frame, fg_color="transparent")
+    MainRight_frame.pack(side="right", fill="both", expand=True, padx=20, pady=20)
     
-    MainRight_frame.pack(side="right", 
-                         fill="both", 
-                         expand=True, 
-                         padx=20, pady=20)
+    logo_frame = ctk.CTkFrame(MainRight_frame, width=550, height=500, corner_radius=100, fg_color="white")
+    logo_frame.pack(side="right", fill="both", expand=True)
+    logo_frame.pack_propagate(False)
     
-#-----------------------OPÇÕES DE CUPONS-------------------------------#
-    
-    # Titulo
-    OptionsTittleLabel = ctk.CTkLabel(MainRight_frame, 
-                                text="SELECIONE OS TIPOS DE CUPONS DESEJADOS:", 
-                                font=("Consolas", 20, "bold"), 
-                                text_color="white")
-    
-    OptionsTittleLabel.pack(anchor='w', pady=(0, 5))
-    
-    #----------CheckBoxes-----------#
-    
-    #Modelo CheckBoxes
-    def CheckBoxModel(text, checkboxes, var):
-        modelo = ctk.CTkCheckBox(MainRight_frame, 
-                             text_color='white',
-                             font=("Consolas", 18, "bold"), 
-                             text=text, 
-                             hover_color='white',
-                             border_color='white',
-                             command=lambda: checkbox_event2(modelo, checkboxes, var))
-        return modelo
-    
-    # Função para garantir que apenas uma CheckBox esteja selecionada
-    def checkbox_event2(checkbox, checkboxes, var):
-        for cb in checkboxes:
-            if cb != checkbox:
-                cb.deselect()
-        var.set(checkbox.cget("text"))  # Atualiza a variável com o nome do item selecionado
-    
-    
-    # Variável para armazenar a opção selecionada
-    selected_option = ctk.StringVar(value="")
-    
-    # Lista para armazenar todas as checkboxes
-    checkboxes = []
+    try:
         
-    # Criar CheckBoxes
-    checkbox_1 = CheckBoxModel('Todos os cupons', checkboxes, selected_option)
-    checkbox_2 = CheckBoxModel('Autorizados e Cancelados', checkboxes, selected_option)
-    checkbox_3 = CheckBoxModel('Cancelados e Cancelamentos', checkboxes, selected_option)
-    checkbox_4 = CheckBoxModel('Autorizados e Cancelamentos', checkboxes, selected_option)
-    checkbox_5 = CheckBoxModel('Autorizados', checkboxes, selected_option)
-    checkbox_6 = CheckBoxModel('Cancelados', checkboxes, selected_option)
-    checkbox_7 = CheckBoxModel('Cancelamentos', checkboxes, selected_option)
-    
-    # Adicionar todas as checkboxes à lista para controle
-    checkboxes.extend([checkbox_1, checkbox_2, checkbox_3, checkbox_4, checkbox_5, checkbox_6, checkbox_7])
+        logo_image = ctk.CTkImage(dark_image=Image.open("logo.png"), size=(500,500))
+        logo_label = ctk.CTkLabel(logo_frame, image=logo_image, text="")
+        logo_label.pack(expand=True)
+        
+    except:
+        
+        # Caso não tenha o logo, exibe texto como placeholder
+        logo_label = ctk.CTkLabel(logo_frame, text="BUSINESS PRO\nCONTÁBIL", font=("Arial", 24, "bold"), text_color="#1e3d2f")
+        logo_label.pack(expand=True)
 
-    # Posicionar as CheckBoxes
-    for checkbox in checkboxes:
-        checkbox.pack(anchor='w', pady=10, padx=20)
     
     
     # Botão para sair do app
-    MainexitButton = ctk.CTkButton(mainPage,
+    MainexitButton = ctk.CTkButton(MainLeft_frame,
                                    font=("Consolas", 20, "bold"), 
                                    text_color='black', 
                                    text="EXECUTAR", 
