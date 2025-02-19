@@ -1,3 +1,6 @@
+#Utils
+from utils.CompanyFormater import formatCompanyCode
+
 #Importando navegador
 from config.browserConfig import Chorme
 
@@ -10,7 +13,10 @@ from Interface.app_state import app_state
 
 #Scripts todos os passos
 from scripts.start import startProcess
+from scripts.company_finder import companyFinder
 
+
+import time
 
 acessValidator = authorize_access() #True or False
 
@@ -22,8 +28,11 @@ if acessValidator:
     driver = Chorme()
     
     startProcess(driver)
-
+    
+    formatedCode = formatCompanyCode(app_state.inscricao_estadual)
+    
+    companyFinder(driver, formatedCode)
+    time.sleep(1000)
 else:
     print('Chave de acesso inválida, por gentileza, fale com seu administrador...')
 
-numero_formatado = f"{app_state.inscricao_estadual[:2]}.{app_state.inscricao_estadual[2:5]}.{app_state.inscricao_estadual[5:8]}-{app_state.inscricao_estadual[8]}"
