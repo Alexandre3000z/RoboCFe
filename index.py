@@ -15,6 +15,7 @@ from Interface.app_state import app_state
 from scripts.start import startProcess
 from scripts.company_finder import companyFinder
 from scripts.sigetWindow import enterSiget
+from scripts.searchCsv import downloadCsvAut,downloadCsvCancel
 
 import time
 
@@ -34,6 +35,9 @@ try:
         companyFinder(driver, formatedCode)
         
         enterSiget(driver)
+        
+        downloadCsvAut(driver)
+        downloadCsvCancel(driver)
         
         
         

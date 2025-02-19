@@ -9,10 +9,18 @@ from scripts.leaveSefaz import leaveSefazDte
 
 from selenium.webdriver.support.ui import Select
 
-
+import keyboard
+import mouse
 
 def downloadCsvAut(driver):
-    time.sleep(20)
+    
+    # Aguarda até que a tecla Enter seja pressionada ou o botão esquerdo do mouse seja clicado
+    while True:
+        if keyboard.is_pressed("enter") or mouse.is_pressed("left"):
+            print('Pressionado com sucesso')
+            break
+    
+    time.sleep(11)
     autoit.send('{ENTER}')
     time.sleep(5)
     autoit.send('{ENTER}')
@@ -42,11 +50,13 @@ def downloadCsvAut(driver):
     
     selectMonth = driver.find_element(By.XPATH, '//*[@id="mes_select"]')
     optionMonth = Select(selectMonth)
-    optionMonth.select_by_index(app_state.mes - 1)
+    optionMonth.select_by_index(int(app_state.mes) - 1)
+    print('pegou mes')
     
     selectYear = driver.find_element(By.XPATH, '//*[@id="ano_select"]')
     optionYear = Select(selectYear)
     optionYear.select_by_value(f'{app_state.ano}')
+    print('pegou ano')
     
     time.sleep(2)
     
@@ -101,7 +111,7 @@ def downloadCsvCancel(driver):
     #SELECIONAR MES E ANO
     selectMonth = findElementByXpath(driver, '//*[@id="mes_select"]')
     optionMonth = Select(selectMonth)
-    optionMonth.select_by_index(app_state.mes - 1)
+    optionMonth.select_by_index(int(app_state.mes) - 1)
     
     selectAno = driver.find_element(By.XPATH, '//*[@id="ano_select"]')
     optionAno = Select(selectAno)
