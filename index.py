@@ -21,18 +21,22 @@ import time
 acessValidator = authorize_access() #True or False
 
 
+try:
+    if acessValidator:
+        startInterface()
+        
+        driver = Chorme()
+        
+        startProcess(driver)
+        
+        formatedCode = formatCompanyCode(app_state.inscricao_estadual)
+        
+        companyFinder(driver, formatedCode)
+        
+        
+        time.sleep(1000)
+    else:
+        raise Exception('Chave de acesso inválida, por gentileza, fale com seu administrador...')
 
-if acessValidator:
-    startInterface()
-    
-    driver = Chorme()
-    
-    startProcess(driver)
-    
-    formatedCode = formatCompanyCode(app_state.inscricao_estadual)
-    
-    companyFinder(driver, formatedCode)
-    time.sleep(1000)
-else:
-    print('Chave de acesso inválida, por gentileza, fale com seu administrador...')
-
+except Exception as e:
+    print(f'Erro: {e}')
