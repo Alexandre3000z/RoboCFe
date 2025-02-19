@@ -18,8 +18,8 @@ root = ctk.CTk()
 root.title("Login")
 root.geometry("1280x720")
 root.configure(fg_color="#f5f5f5")  # Cor de fundo clara
-
-openMainPage(root)
+def startInterface():
+    openMainPage(root)
             
 # resultado = None
 
