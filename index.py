@@ -13,11 +13,16 @@ from auth.validateAcess import authorize_access
 from Interface.front import startInterface
 from Interface.app_state import app_state
 
-#Scripts todos os passos
+#Scripts todos os passos do DTE
 from scripts.DTE.start import startProcess
 from scripts.DTE.company_finder import companyFinder
 from scripts.DTE.sigetWindow import enterSiget
 from scripts.DTE.searchCsv import downloadCsvAut,downloadCsvCancel
+
+#Scripts todos os passos do Ambiente Seguro
+
+
+
 
 import time
 import os
