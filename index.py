@@ -14,7 +14,7 @@ from Interface.app_state import app_state
 #Scripts todos os passos
 from scripts.start import startProcess
 from scripts.company_finder import companyFinder
-
+from scripts.sigetWindow import enterSiget
 
 import time
 
@@ -33,6 +33,7 @@ try:
         
         companyFinder(driver, formatedCode)
         
+        enterSiget(driver)
         
         time.sleep(1000)
     else:
