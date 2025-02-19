@@ -21,6 +21,7 @@ from scripts.searchCsv import downloadCsvAut,downloadCsvCancel
 import time
 import os
 
+from classes.CFElist import cfe_list
 
 downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
 
@@ -48,6 +49,9 @@ try:
         responseCancel = downloadCsvCancel(driver)
         if responseCancel == True:
             readCSV(downloads_path, 'Cancelados')
+        
+        print(cfe_list.totalList)
+        print(len(cfe_list.totalList))
         
         
         time.sleep(1000)
