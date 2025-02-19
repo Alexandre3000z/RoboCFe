@@ -6,7 +6,7 @@ class AppState:
         self.mes = None
         self.ano = None
 
-    def set_data(self, selected_process, inscricao_estadual, mes, ano):
+    def set_data(self,inscricao_estadual, mes, ano):
         """Atualiza os dados no estado global"""
         self.inscricao_estadual = inscricao_estadual
         self.mes = mes
