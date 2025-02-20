@@ -20,6 +20,7 @@ from Interface.app_state import app_state
 from scripts.DTE.start import startProcess
 from scripts.DTE.company_finder import companyFinder
 from scripts.DTE.sigetWindow import enterSiget
+from scripts.DTE.Break import passBreak
 from scripts.DTE.searchCsv import downloadCsvAut,downloadCsvCancel
 
 #Scripts todos os passos do Ambiente Seguro
@@ -48,6 +49,8 @@ try:
         companyFinder(driver, formatedCode)
         
         enterSiget(driver)
+        
+        passBreak(driver)
         
         responseAut = downloadCsvAut(driver)
         if responseAut == True:
