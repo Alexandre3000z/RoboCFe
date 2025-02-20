@@ -1,3 +1,6 @@
+#Classes
+from classes.login import user_login
+
 #Utils
 from utils.CompanyFormater import formatCompanyCode
 from utils.csvReader import readCSV
@@ -20,9 +23,7 @@ from scripts.DTE.sigetWindow import enterSiget
 from scripts.DTE.searchCsv import downloadCsvAut,downloadCsvCancel
 
 #Scripts todos os passos do Ambiente Seguro
-
-
-
+from scripts.AmbienteSeguro.start import loginAmbienteSeguro
 
 import time
 import os
@@ -61,6 +62,11 @@ try:
         print(cfe_list.totalList)
         print(len(cfe_list.totalList))
         
+        
+        #Credenciais ambiente seguro
+        user = user_login.username
+        password = user_login.password
+        loginAmbienteSeguro(driver,user,password)
         
         time.sleep(1000)
     else:

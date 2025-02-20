@@ -2,14 +2,19 @@ import customtkinter as ctk
 from PIL import Image
 from tkinter import messagebox
 from Interface.app_state import app_state
-
+from classes.login import user_login
 def openMainPage(lastPage):
     
    
 
     def save_and_close():
         """Captura os valores dos campos e armazena no estado global antes de fechar a janela."""
-
+        
+        user = User_entry.get()
+        password = Password_entry.get()
+        
+        user_login.set_data(user,password)
+        
         inscricao_estadual = Ie_entry.get()
         mes = Month_entry.get()
         ano = Year_entry.get()
@@ -85,21 +90,21 @@ def openMainPage(lastPage):
     User_entry.pack(anchor='w', pady=0, padx=20)
     
     # Titulo de SENHA
-    UserLabel = ctk.CTkLabel(MainLeft_frame,
+    PasswordLabel = ctk.CTkLabel(MainLeft_frame,
                            text="SENHA:",
                            font=("Consolas", 20, "bold"), 
                            text_color="white")
     
-    UserLabel.pack(anchor='w', pady=(20, 10))
+    PasswordLabel.pack(anchor='w', pady=(20, 10))
     
     # Campo para SENHA
-    User_entry = ctk.CTkEntry(MainLeft_frame, 
+    Password_entry = ctk.CTkEntry(MainLeft_frame, 
                             text_color='black',
                             width=175, 
                             font=("Consolas", 18, "bold"), 
                             border_color='white')
     
-    User_entry.pack(anchor='w', pady=0, padx=20)
+    Password_entry.pack(anchor='w', pady=0, padx=20)
     
 #-------------- CAMPO DE INSCRIÇÃO ESTADUAL --------------#
 
