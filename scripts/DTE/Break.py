@@ -22,7 +22,7 @@ def passBreak(driver):
     original_window = driver.current_window_handle
 
     # Espera até que uma nova janela esteja aberta
-    WebDriverWait(driver, 10).until(EC.number_of_windows_to_be(2))
+    WebDriverWait(driver, 6).until(EC.number_of_windows_to_be(2))
 
     # Captura todos os identificadores de janelas abertas
     windows = driver.window_handles
