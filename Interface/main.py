@@ -3,6 +3,8 @@ from PIL import Image
 from tkinter import messagebox
 from Interface.app_state import app_state
 from classes.login import user_login
+
+from utils.Validate_CPF import validate_cpf
 def openMainPage(lastPage):
     
    
@@ -25,6 +27,16 @@ def openMainPage(lastPage):
         # Fecha a janela principal
         mainPage.destroy()
         
+    def check_and_save():
+        """Validates CPF before executing save_and_close."""
+        cpf = User_entry.get()
+        if not validate_cpf(cpf):
+            messagebox.showerror("Error", "CPF Inválido. Por favor, digite um CPF válido.")
+            return
+        
+        save_and_close()
+        
+            
         
     # Fecha a janela de login
     lastPage.destroy()
@@ -220,7 +232,7 @@ def openMainPage(lastPage):
                                    text_color='black', 
                                    text="EXECUTAR", 
                                    fg_color='white', 
-                                   command=save_and_close)
+                                   command=check_and_save)
     
     MainexitButton.pack(pady=0, side='bottom' , expand=True)
 
