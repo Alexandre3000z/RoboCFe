@@ -16,13 +16,13 @@ def company_finder_AmbSeg(driver, companyCode):
     lines = findElementsByXpath(driver, '//*[@id="form1"]/table/tbody/tr')
     
     for line in lines:
-        celula = line.find_element(By.XPATH, './td[1]')
-        celulaNome = line.find_element(By.XPATH, './td[2]') # Ajustar índice conforme necessário
-        textoNome = celulaNome.text
-        texto_da_celula = celula.text
+        cell = line.find_element(By.XPATH, './td[1]')
+        cellName = line.find_element(By.XPATH, './td[2]') # Ajustar índice conforme necessário
+        textName = cellName.text
+        cellText = cell.text
         inscricaoEstadual = companyCode.lstrip('0')
 
-        if(texto_da_celula == inscricaoEstadual):
-            celula.click()
-            print('Inscrição estadual: ',texto_da_celula,' Empresa: ', textoNome)
+        if(cellText == inscricaoEstadual):
+            cell.click()
+            print('Inscrição estadual: ',cellText,' Empresa: ', textName)
             break
