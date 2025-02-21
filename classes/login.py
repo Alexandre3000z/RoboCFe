@@ -7,7 +7,7 @@ class User_Login:
 
     def __init__(self):
         """Inicializa a classe carregando apenas o nome de usuário do arquivo JSON."""
-        self.username = None
+        self.username = ''
         self.password = None  # Senha nunca será salva
         self.load_credentials()
 
@@ -20,9 +20,9 @@ class User_Login:
                     self.username = data.get("username", None)
             except (json.JSONDecodeError, IOError):
                 print("Erro ao carregar o arquivo de configuração. Definindo valores padrão.")
-                self.username = None
+                self.username = ''
         else:
-            self.username = None
+            self.username = ''
 
     def set_data(self, username, password):
         """Salva o nome de usuário e senha no arquivo JSON."""

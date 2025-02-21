@@ -88,7 +88,7 @@ def openMainPage(lastPage):
                             border_color='white')
     
     User_entry.pack(anchor='w', pady=0, padx=20)
-    
+    User_entry.insert(0, user_login.username)
     # Titulo de SENHA
     PasswordLabel = ctk.CTkLabel(MainLeft_frame,
                            text="SENHA:",
