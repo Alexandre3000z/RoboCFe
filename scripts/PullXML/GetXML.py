@@ -27,7 +27,7 @@ def getXML(xml, url):
     caminho_arquivo = os.path.join(downloads_dir, nome_arquivo)
     
     # Fazer o download do arquivo
-    response = requests.get(new_url, stream=True)
+    response = requests.get(new_url, stream=True, timeout=30)
 
     # Verifica se o download foi bem-sucedido (código 200)
     if response.status_code == 200:
