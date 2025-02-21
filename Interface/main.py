@@ -5,9 +5,13 @@ from Interface.app_state import app_state
 from classes.login import user_login
 
 from utils.Validate_CPF import validate_cpf
+from auth.validateAcess import authorize_access
 def openMainPage(lastPage):
+    acessValidator = authorize_access()
     
-   
+    if acessValidator == False:
+        messagebox.showerror("Error", "Licença não encontrada. Execução não autorizada, fale com o seu administrador.")
+        return
 
     def save_and_close():
         """Captura os valores dos campos e armazena no estado global antes de fechar a janela."""
@@ -23,15 +27,40 @@ def openMainPage(lastPage):
 
         # Atualiza os dados globais
         app_state.set_data(inscricao_estadual, mes, ano)
-
+        app_state.autorizationNext(True)
         # Fecha a janela principal
         mainPage.destroy()
         
     def check_and_save():
         """Validates CPF before executing save_and_close."""
         cpf = User_entry.get()
+
+        year = Year_entry.get()
+        
+        month = Month_entry.get()
+        
+        companyCode = Ie_entry.get()
+        
+        password = Password_entry.get()
+        
         if not validate_cpf(cpf):
             messagebox.showerror("Error", "CPF Inválido. Por favor, digite um CPF válido.")
+            return
+        
+        if len(year) != 4:
+            messagebox.showerror("Error", "Ano Inválido. O ano deve ter um padrão de 4 digitos")
+            return
+        
+        if len(month) > 2 or len(month) == 0:
+            messagebox.showerror("Error", "Mês Inválido. O mês deve ter um padrão de 1 ou 2 digitos")
+            return
+        
+        if len(companyCode) != 9:
+            messagebox.showerror("Error", "Inscrição da Empresa Inválida. O código deve ter 9 digitos")
+            return
+        
+        if not password:
+            messagebox.showerror("Error", "Por favor, digite a senha.")
             return
         
         save_and_close()
@@ -199,7 +228,7 @@ def openMainPage(lastPage):
                               border_color='white')
     
     Year_entry.pack(anchor='w', pady=5, padx=20)
-
+    Year_entry.insert(0, '2025')
 #------------------------------------------------------------------#
 #---------------------------LADO DIREITO---------------------------#
 #------------------------------------------------------------------#

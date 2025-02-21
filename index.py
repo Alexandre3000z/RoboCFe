@@ -44,9 +44,10 @@ acessValidator = authorize_access() #True or False
 
 
 try:
-    if acessValidator:
-        startInterface()
-        
+    
+    startInterface()
+    
+    if app_state.next == True:   
         driver = Chorme()
         
         startProcess(driver)
@@ -97,7 +98,7 @@ try:
         
         time.sleep(1000)
     else:
-        raise Exception('Chave de acesso inválida, por gentileza, fale com seu administrador...')
+        raise Exception('Programa encerrado...')
 
 except Exception as e:
     print(f'Erro: {e}')
