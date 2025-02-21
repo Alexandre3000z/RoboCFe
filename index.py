@@ -25,6 +25,8 @@ from scripts.DTE.searchCsv import downloadCsvAut,downloadCsvCancel
 
 #Scripts todos os passos do Ambiente Seguro
 from scripts.AmbienteSeguro.start import loginAmbienteSeguro
+from scripts.AmbienteSeguro.enterFMeModule import enterMfeModule
+from scripts.AmbienteSeguro.company_finder import company_finder_AmbSeg
 
 import time
 import os
@@ -70,6 +72,8 @@ try:
         user = user_login.username
         password = user_login.password
         loginAmbienteSeguro(driver,user,password)
+        enterMfeModule(driver)
+        company_finder_AmbSeg(driver, app_state.inscricao_estadual)
         
         time.sleep(1000)
     else:
