@@ -27,6 +27,7 @@ from scripts.DTE.searchCsv import downloadCsvAut,downloadCsvCancel
 from scripts.AmbienteSeguro.start import loginAmbienteSeguro
 from scripts.AmbienteSeguro.enterFMeModule import enterMfeModule
 from scripts.AmbienteSeguro.company_finder import company_finder_AmbSeg
+from scripts.AmbienteSeguro.CfeQuery import cfeQuery
 
 import time
 import os
@@ -76,7 +77,8 @@ try:
         enterMfeModule(driver)
         company_finder_AmbSeg(driver, app_state.inscricao_estadual)
         
-        
+        #tem que ver a opção da janela
+        cfeQuery(driver, cfe_list.totalList[0])
         
         time.sleep(1000)
     else:
