@@ -27,3 +27,5 @@ def loginAmbienteSeguro(driver, user, password):
     #Clica no botão entrar
     buttonLogin = findElementByXpath(driver, '//*[@id="btEntrar"]')
     buttonLogin.click()
+    
+    time.sleep(2)

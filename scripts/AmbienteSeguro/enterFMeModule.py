@@ -10,3 +10,5 @@ def enterMfeModule(driver):
             EC.presence_of_element_located((By.XPATH, '//*[@id="menu_dir"]/ul/li/a'))
         )
         acessarMFE.click()
+        
+        time.sleep(2)

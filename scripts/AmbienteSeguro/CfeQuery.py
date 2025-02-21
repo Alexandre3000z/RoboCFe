@@ -51,4 +51,3 @@ def cfeQuery(driver, cfe):
         EC.presence_of_element_located((By.CLASS_NAME, 'close'))
     )
     fechar.click()
-    

@@ -26,3 +26,5 @@ def company_finder_AmbSeg(driver, companyCode):
             cell.click()
             print('Inscrição estadual: ',cellText,' Empresa: ', textName)
             break
+    
+    time.sleep(2)    

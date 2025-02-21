@@ -29,6 +29,10 @@ from scripts.AmbienteSeguro.enterFMeModule import enterMfeModule
 from scripts.AmbienteSeguro.company_finder import company_finder_AmbSeg
 from scripts.AmbienteSeguro.CfeQuery import cfeQuery
 
+#Scripts para puxar todos os XML
+from scripts.PullXML.LinkAPI import LinkXML
+from scripts.PullXML.GetXML import getXML
+
 import time
 import os
 
@@ -77,8 +81,19 @@ try:
         enterMfeModule(driver)
         company_finder_AmbSeg(driver, app_state.inscricao_estadual)
         
+        
         #tem que ver a opção da janela
         cfeQuery(driver, cfe_list.totalList[0])
+        
+        filterList = analisadorXmls(cfe_list.totalList)
+        linkApi = LinkXML(driver)
+        
+        #Começar processo de download dos XMLS
+        for xml in filterList:
+            getXML(xml ,linkApi)
+            
+        time.sleep(2)
+        organizarPastas()
         
         time.sleep(1000)
     else:
