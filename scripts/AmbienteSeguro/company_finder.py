@@ -13,11 +13,11 @@ def company_finder_AmbSeg(driver, companyCode):
         return    
 
     #Lista das linhas
-    linhas = driver.find_elements(By.XPATH, '//*[@id="form1"]/table/tbody/tr')
+    lines = findElementsByXpath(driver, '//*[@id="form1"]/table/tbody/tr')
     
-    for linha in linhas:
-        celula = linha.find_element(By.XPATH, './td[1]')
-        celulaNome = linha.find_element(By.XPATH, './td[2]') # Ajustar índice conforme necessário
+    for line in lines:
+        celula = line.find_element(By.XPATH, './td[1]')
+        celulaNome = line.find_element(By.XPATH, './td[2]') # Ajustar índice conforme necessário
         textoNome = celulaNome.text
         texto_da_celula = celula.text
         inscricaoEstadual = companyCode.lstrip('0')

@@ -71,9 +71,12 @@ try:
         #Credenciais ambiente seguro
         user = user_login.username
         password = user_login.password
+        
         loginAmbienteSeguro(driver,user,password)
         enterMfeModule(driver)
         company_finder_AmbSeg(driver, app_state.inscricao_estadual)
+        
+        
         
         time.sleep(1000)
     else:
