@@ -15,6 +15,7 @@ from auth.validateAcess import authorize_access
 #INTERFACE GRÁFICA
 from Interface.front import startInterface
 from Interface.errorWindow import error_message
+from Interface.continueWindow import continue_message
 from Interface.app_state import app_state
 
 #Scripts todos os passos do DTE
@@ -90,13 +91,20 @@ def initialize():
             filterList = analisadorXmls(cfe_list.totalList)
             linkApi = LinkXML(driver)
             
+            continue_message('Processo iniciado, o nevegador será fechado, o computador poderá ser utilizado normalmente enquanto os XMLS são baixados.')
+            driver.quit()
+            
             #Começar processo de download dos XMLS
             try:
-                for xml in filterList:
+                for index, xml in enumerate(filterList):
                     getXML(xml ,linkApi)
+                    print(f'Processando {index + 1} de {len(filterList)} Xmls...')
+                    print(xml)
                     
                 time.sleep(2)
                 
+                continue_message('Processo finalizado, todos os XMLs foram baixados, verificar pasta.')
+
             except:
                 error_message('Ocorreu uma instabilidade no ambiente seguro, não foi possivel baixar todos os cupons, por gentileza, reinicie o programa.')
 
@@ -105,7 +113,6 @@ def initialize():
 
     except Exception as e:
         print(f'Erro: {e}')
-
 
 initialize()
 organizarPastas()       

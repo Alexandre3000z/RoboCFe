@@ -1,18 +1,17 @@
 import tkinter as tk
 import os
-
-def error_message(error):
+def continue_message(error):
     
     # Criar a janela principal para iniciar o Tkinter
     root = tk.Tk()
     root.withdraw()  # Oculta a janela principal
     # Criar a janela de erro
     window = tk.Toplevel()
-    window.title("Error")
+    window.title("Mensagem de sucesso!")
     window.geometry("400x250")
-    icon_path = os.path.join(os.path.dirname(__file__), 'assets', 'error.ico')
+    icon_path = os.path.join(os.path.dirname(__file__), 'assets', 'check.ico')
     window.iconbitmap(icon_path)  # Define o ícone (.ico)
-    window.configure(bg="#FFCDD2")  # Cor de fundo vermelha clara
+    window.configure(bg="#C8E6C9")  # Cor de fundo vermelha clara
     window.resizable(False, False)
 
     # Centralizar a janela corretamente
@@ -26,13 +25,13 @@ def error_message(error):
     window.geometry(f"{window_width}x{window_height}+{x_position}+{y_position}")
 
     # Frame para organizar layout
-    frame = tk.Frame(window, bg="#FFCDD2", padx=20, pady=20)
+    frame = tk.Frame(window, bg="#C8E6C9", padx=20, pady=20)
     frame.pack(expand=True, fill="both")
 
     # Label para exibir a mensagem de erro
-    error_label = tk.Label(frame, text=error, font=("Arial", 12, "bold"), fg="black", bg="#FFCDD2",
+    continue_label = tk.Label(frame, text=error, font=("Arial", 12, "bold"), fg="black", bg="#C8E6C9",
                            wraplength=360, justify="center")  # Quebra de linha automática
-    error_label.pack(pady=10)
+    continue_label.pack(pady=10)
 
     # Botão de fechar e encerrar o Tkinter
     def close_and_exit():
@@ -41,9 +40,9 @@ def error_message(error):
         root.quit()
         root.destroy()
 
-    close_button = tk.Button(frame, text="Close", font=("Arial", 12, "bold"), fg="white",
-                             bg="red", relief="flat", padx=10, pady=5, command=close_and_exit)
-    close_button.pack(pady=10)
+    ok_button = tk.Button(frame, text="OK", font=("Arial", 12, "bold"), fg="white",
+                             bg="#81C784", relief="flat", padx=10, pady=5, command=close_and_exit)
+    ok_button.pack(pady=10)
 
     # Bloqueia interação com outras janelas até que a mensagem seja fechada
     window.transient()

@@ -27,13 +27,13 @@ def getXML(xml, url):
     caminho_arquivo = os.path.join(downloads_dir, nome_arquivo)
     
     # Fazer o download do arquivo
-    response = requests.get(new_url, stream=True, timeout=30)
+    response = requests.get(new_url, stream=True, timeout=120)
 
     # Verifica se o download foi bem-sucedido (código 200)
     if response.status_code == 200:
         with open(caminho_arquivo, "wb") as file:
             for chunk in response.iter_content(chunk_size=1024):
                 file.write(chunk)
-        print(f"Download concluído! Arquivo salvo como: {nome_arquivo}")
+        # print(f"Download concluído! Arquivo salvo como: {nome_arquivo}")
     else:
         print(f"Erro ao baixar o arquivo. Código de status: {response.status_code}")

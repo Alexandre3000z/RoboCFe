@@ -51,7 +51,7 @@ def openMainPage(lastPage):
             messagebox.showerror("Error", "Ano Inválido. O ano deve ter um padrão de 4 digitos")
             return
         
-        if len(month) > 2 or len(month) == 0:
+        if len(month) > 2 or len(month) == 0 or int(month) > 12 or int(month) == 0:
             messagebox.showerror("Error", "Mês Inválido. O mês deve ter um padrão de 1 ou 2 digitos")
             return
         
