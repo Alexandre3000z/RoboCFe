@@ -103,7 +103,7 @@ def initialize():
                     
                 time.sleep(2)
                 
-                continue_message('Processo finalizado, todos os XMLs foram baixados, verificar pasta.')
+                continue_message(f'Processo finalizado, {len(filterList)} XMLs foram baixados, verificar pasta.')
 
             except:
                 error_message('Ocorreu uma instabilidade no ambiente seguro, não foi possivel baixar todos os cupons, por gentileza, reinicie o programa.')
