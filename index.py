@@ -1,5 +1,6 @@
 #Classes
 from classes.login import user_login
+from classes.CFElist import cfe_list
 
 #Utils
 from utils.CompanyFormater import formatCompanyCode
@@ -38,7 +39,7 @@ from scripts.PullXML.GetXML import getXML
 import time
 import os
 
-from classes.CFElist import cfe_list
+
 
 downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
 
