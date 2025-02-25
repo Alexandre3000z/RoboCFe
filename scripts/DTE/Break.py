@@ -14,7 +14,7 @@ def passBreak(driver):
     autoit.send('{ENTER}')
     time.sleep(5)
     autoit.send('{ENTER}')
-    time.sleep(1)
+    time.sleep(6)
     
     
     # Guarda o identificador da janela original
