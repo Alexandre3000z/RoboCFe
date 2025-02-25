@@ -139,7 +139,8 @@ def openMainPage(lastPage):
     PasswordLabel.pack(anchor='w', pady=(20, 10))
     
     # Campo para SENHA
-    Password_entry = ctk.CTkEntry(MainLeft_frame, 
+    Password_entry = ctk.CTkEntry(MainLeft_frame,
+                            show="*", 
                             text_color='black',
                             width=175, 
                             font=("Consolas", 18, "bold"), 
