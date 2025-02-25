@@ -17,20 +17,10 @@ def passBreak(driver):
     time.sleep(6)
     
     
-    # Guarda o identificador da janela original
-    original_window = driver.current_window_handle
-
-    # Espera até que uma nova janela esteja aberta
-    WebDriverWait(driver, 6).until(EC.number_of_windows_to_be(2))
-
-    # Captura todos os identificadores de janelas abertas
-    windows = driver.window_handles
-
-    # Muda para a nova janela
-    for window in windows:
-        if window != original_window:
-            driver.switch_to.window(window)
-            break
+    for window in driver.window_handles:
+        
+        driver.switch_to.window(window)
+        print(f"Alterado para: {driver.title}")
     
     
     try:
