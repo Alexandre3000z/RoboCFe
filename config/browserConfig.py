@@ -26,7 +26,8 @@ def Chorme():
         options.add_argument("--disable-gpu")
         options.add_argument("--allow-running-insecure-content")
         options.add_argument("--ignore-certificate-errors")
-
+        options.add_argument("--start-fullscreen")
+        
         # Inicia o navegador
         driver = uc.Chrome(service=service, options=options)
         

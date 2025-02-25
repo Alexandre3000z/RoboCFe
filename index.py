@@ -72,10 +72,6 @@ def initialize():
             if responseCancel == True:
                 readCSV(downloads_path, 'Cancelados')
                 apagarCSV(downloads_path)
-                
-            print(cfe_list.totalList)
-            print(len(cfe_list.totalList))
-            
             
             #Credenciais ambiente seguro
             user = user_login.username

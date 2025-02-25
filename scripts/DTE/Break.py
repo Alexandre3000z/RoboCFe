@@ -8,7 +8,6 @@ def passBreak(driver):
     # Aguarda até que a tecla Enter seja pressionada ou o botão esquerdo do mouse seja clicado
     while True:
         if keyboard.is_pressed("enter") or mouse.is_pressed("left"):
-            print('Pressionado com sucesso')
             break
     
     time.sleep(11)
