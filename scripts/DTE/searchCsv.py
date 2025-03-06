@@ -48,17 +48,17 @@ def downloadCsvAut(driver):
         time.sleep(2)          
         valueLink.click()
 
-        time.sleep(10)
+        time.sleep(25)
         
         downloadButton = locateByXpath(driver, 30, '//*[@id="ModalDet"]/div/div/div[2]/div[1]/div/div/button')
         time.sleep(2)          
         downloadButton.click()
         
-        time.sleep(8)
+        time.sleep(13)
         
         csvButton = locateByXpath(driver, 30, '//*[@id="ModalDet"]/div/div/div[2]/div[1]/div/div/ul/li[2]/a')
         csvButton.click()
-        time.sleep(8)
+        time.sleep(13)
         
         closeButton = locateByXpath(driver, 30, '//*[@id="ModalDet"]/div/div/div[1]/button')
         closeButton.click()                                    
@@ -108,17 +108,17 @@ def downloadCsvCancel(driver):
         time.sleep(2)
         valueLink.click()
           
-        time.sleep(10)
+        time.sleep(13)
         
         downloadButton = locateByXpath(driver, 30, '//*[@id="Modal"]/div/div/div[2]/div[1]/div/div/button')
         downloadButton.click()  
         
-        time.sleep(8)
+        time.sleep(13)
         
         csvButton = locateByXpath(driver, 30, '//*[@id="Modal"]/div/div/div[2]/div[1]/div/div/ul/li[2]/a')
         csvButton.click()
         
-        time.sleep(8)
+        time.sleep(13)
         
         closeButton = locateByXpath(driver,30 , '//*[@id="Modal"]/div/div/div[1]/button')
         closeButton.click()
