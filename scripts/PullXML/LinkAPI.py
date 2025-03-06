@@ -12,5 +12,4 @@ def LinkXML(driver):
     downloadLink = driver.execute_script(
         "return document.querySelector('downloads-manager').shadowRoot.querySelector('downloads-item').shadowRoot.querySelector('a').href"
     )
-
     return downloadLink
